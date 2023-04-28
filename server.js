@@ -1,7 +1,7 @@
 //Dependencies
 const express = require("express");
 const path = require("path");
-//const routes = require("./controller");
+const routes = require("./controller");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
 const sequelize = require("./config/connection");
@@ -18,7 +18,7 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "public")));
-//app.use(routes);
+app.use(routes);
 
 // Starts the server
 sequelize.sync({ force: true }).then(() => {

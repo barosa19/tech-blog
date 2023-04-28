@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "serve" : "npx nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/barosa19/tech-blog#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "bootstrap": "^5.2.3",
     "connect-session-sequelize": "^7.1.6",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -26,5 +28,8 @@
     "express-session": "^1.17.3",
     "mysql2": "^3.2.4",
     "sequelize": "^6.31.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
