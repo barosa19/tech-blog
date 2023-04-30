@@ -9,6 +9,7 @@ Comment.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
     },
     text: {
       type: DataTypes.STRING,
@@ -17,6 +18,21 @@ Comment.init(
     date: {
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "username",
+      },
+      post_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "post",
+          key: "id"
+        }
+      }
     },
   },
   {

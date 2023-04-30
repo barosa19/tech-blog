@@ -9,6 +9,7 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -23,6 +24,8 @@ Post.init(
       allowNull: false,
     },
     username: {
+      type: DataTypes.STRING,
+      allowNull: false,
       references: {
         model: "user",
         key: "username",
