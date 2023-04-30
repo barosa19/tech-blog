@@ -5,6 +5,7 @@ const User = require("././user");
 
 Post.belongsTo(User, {});
 User.hasMany(Post, {});
-
+User.hasMany(Comment, {})
 Comment.belongsTo(Post, {});
+Comment.belongsTo(User, {})
 Post.hasMany(Comment, {});
