@@ -19,21 +19,6 @@ Comment.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "user",
-        key: "username",
-      },
-      post_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "post",
-          key: "id"
-        }
-      }
-    },
   },
   {
     sequelize,
