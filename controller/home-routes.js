@@ -14,14 +14,41 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Dashboard Route that will render all of the Users Post
-router.get("/dashboard/:id", async (req, res) => {
+//Route that will render one Post
+router.get("/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk({
+      where: { user_id: req.params.id },
+      include: [{model: Comment}]
+    });
+    const post = postData.get({ plain: true });
+    res.render("post", { post });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Dashboard Route that will render all of the users post
+router.get("/dashboard", async (req, res) => {
   try {
     const postData = await Post.findAll({
-      where: { user_id: req.params.id },
+      include: [{ model: User }],
     });
     const post = postData.map((post) => post.get({ plain: true }));
     res.render("dashboard", { post });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Route that will render one of the users post 
+router.get("/dashboard/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk({
+      where: { id: req.params.id },
+    });
+    const post = postData.get({ plain: true });
+    res.render("mypost", { post });
   } catch (err) {
     res.status(500).json(err);
   }
